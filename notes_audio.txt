@@ -1,0 +1,24 @@
+
+  signal_frequency = PWM_frequency / samples_per_period
+
+  signal_frequency = (timer_clock / PWM_levels) samples_per_period)
+
+  signal_frequency = ((CPU_clock / prescaler) / PWM_levels) samples_per_period)
+
+  signal_frequency = CPU_clock / (prescaler * PWM_levels * samples_per_period)
+
+-----------------------------------------------------------------------------------
+  CPU_clock = 8 MHz
+
+  prescaler = 2
+
+  timer_clock = 4MHz
+
+  PWM_levels = 256
+
+  PWM_frequency = 15.625KHz
+
+  samples_per_period = 512
+-----------------------------------------------------------------------------------
+
+  signal_frequency = ~30.5Hz

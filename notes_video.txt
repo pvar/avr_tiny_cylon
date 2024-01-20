@@ -1,0 +1,49 @@
+
+# LEDs are controlled one by one with PWM (timer/counter1)
+
+# the row of LEDs is scanned once per 3.04ms (scan rate ~329Hz)
+
+# timer/counter0 prescaller is set to 256
+
+# the row scanning begins when timer/counter0 overflows (starting value of timer is 160)
+
+# pixel intensity is controlled with PWM (based on compare match A of timer/counter0)
+
+# for pixel intensity control, the timer/counter0 prescaller is set to 8
+
+# pixel values  are updated per 8 row scans
+
+
+
+ LED	PortB		DDRB
+------------------------------------
+ 01	001x10ZZ	0001 1100
+ 02	001x01ZZ	0001 1100
+ 03	001x1Z0Z	0001 1010
+ 04	001x0Z1Z	0001 1010
+ 05	001x1ZZ0	0001 1001
+ 06	001x0ZZ1	0001 1001
+ 07	001xZZ10	0001 0011
+ 08	001xZZ01	0001 0011
+ 09	001xZ1Z0	0001 0101
+ 10	001xZ0Z1	0001 0101
+ 11	001xZ10Z	0001 0110
+ 12	001xZ01Z	0001 0110
+
+# Z: the coresponding pin is left floating
+
+# PortB mask: 00010000
+
+
+
+# mask-out all bits on PortB excpet one for tone generation
+
+# bit5 on DDRB is always cleared (reset pin is configured as input for switch)
+
+# bit5 on PortB is always set (pull-up resistor on reset pin is enabled)
+
+# bit4 on DDRB is set (configured as output for tone generation)
+
+# bit4 on PortB is altered by tone generation routine
+
+# all bits with Z value on PortB will be cleared (left floating / no pull-up resistors)
